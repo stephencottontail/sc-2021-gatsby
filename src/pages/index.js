@@ -11,7 +11,7 @@ export default function Home( { data } ) {
 						id={ node.databaseId }
 					>
 						<header>
-							<Link to={ node.slug }>
+							<Link to={ `blog/${node.slug}` }>
 								<h2>{ node.title }</h2>
 								<p>{ node.date }</p>
 							</Link>
