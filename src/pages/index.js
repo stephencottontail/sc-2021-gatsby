@@ -26,7 +26,6 @@ export default function Home( { data } ) {
 	)
 }
 
-
 /**
  * `formatString` is created using momentjs tokens
  *
