@@ -1,5 +1,5 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react'
+import { graphql } from 'gatsby'
 
 export default ( { data } ) => {
 	const post = data.allWpPost.edges[0].node
