@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import Header from '../components/Header'
 
 export default function Theme( { data } ) {
-	return (
+	return [
+		<Header />,
 		<div>
 			{ data.allWpThemePost.edges.map( ( { node } ) => {
 				return (
@@ -23,7 +25,7 @@ export default function Theme( { data } ) {
 				)
 			} ) }
 		</div>
-	)
+	]
 }
 
 export const pageQuery = graphql`

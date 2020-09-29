@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import Header from '../components/Header'
 
 export default function Home( { data } ) {
-	return (
+	return [
+		<Header home/>,
 		<div>
 			{ data.allWpPost.edges.map( ( { node } ) => {
 				return (
@@ -23,7 +25,7 @@ export default function Home( { data } ) {
 				)
 			} ) }
 		</div>
-	)
+	]
 }
 
 /**
