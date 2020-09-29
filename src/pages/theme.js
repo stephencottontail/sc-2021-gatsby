@@ -1,31 +1,32 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import Header from '../components/Header'
+import Layout from '../components/Layout'
 
 export default function Theme( { data } ) {
-	return [
-		<Header />,
-		<div>
-			{ data.allWpThemePost.edges.map( ( { node } ) => {
-				return (
-					<article
-						key={ node.databaseId }
-						id={ node.databaseId }
-					>
-						<header>
-							<Link to={ `${node.slug}` }>
-								<h2>{ node.title }</h2>
-								<p>{ node.date }</p>
-							</Link>
-						</header>
-						<div
-							dangerouslySetInnerHTML={{ __html: node.content }}
-						/>
-					</article>
-				)
-			} ) }
-		</div>
-	]
+	return (
+		<Layout>
+			<main>
+				{ data.allWpThemePost.edges.map( ( { node } ) => {
+					return (
+						<article
+							key={ node.databaseId }
+							id={ node.databaseId }
+						>
+							<header>
+								<Link to={ `${node.slug}` }>
+									<h2>{ node.title }</h2>
+									<p>{ node.date }</p>
+								</Link>
+							</header>
+							<div
+								dangerouslySetInnerHTML={{ __html: node.content }}
+							/>
+						</article>
+					)
+				} ) }
+			</main>
+		</Layout>
+	)
 }
 
 export const pageQuery = graphql`
