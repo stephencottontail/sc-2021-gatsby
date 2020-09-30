@@ -35,18 +35,18 @@ export default function Home( { data } ) {
  * @link https://momentjs.com/docs/#/displaying/format/
  */
 export const pageQuery = graphql`
-			query {
-				allWpPost(sort: { fields: [date] }) {
-					edges {
-						node {
-							title
-							excerpt
-							databaseId
-							slug
-							date(formatString: "Do")
-						}
-					}
-				}
+query {
+	allWpPost( sort: { fields: [date] } ) {
+		edges {
+			node {
+				title
+				excerpt
+				databaseId
+				slug
+				date( formatString: "MMMM D YYYY" )
 			}
-			`
+		}
+	}
+}
+`
 

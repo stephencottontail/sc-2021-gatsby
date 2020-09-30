@@ -56,7 +56,7 @@ export default function Project( { data } ) {
 
 export const pageQuery = graphql`
 query {
-	allWpProject(sort: { fields: [date] }) {
+	allWpProject( sort: { fields: [date] } ) {
 		edges {
 			node {
 				title
@@ -66,7 +66,7 @@ query {
 				content
 				databaseId
 				slug
-				date(formatString: "Do")
+				date( formatString: "MMMM D YYYY" )
 			}
 		}
 	}

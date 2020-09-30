@@ -69,7 +69,7 @@ query($slug: String!) {
 				content
 				excerpt
 				slug
-				date( formatString: "Do" )
+				date( formatString: "MMMM D YYYY" )
 				featuredImage {
 					node {
 						srcSet

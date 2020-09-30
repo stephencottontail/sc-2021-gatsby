@@ -53,14 +53,14 @@ export default function Theme( { data } ) {
 
 export const pageQuery = graphql`
 query {
-	allWpThemePost(sort: { fields: [date] }) {
+	allWpThemePost( sort: { fields: [date] } ) {
 		edges {
 			node {
 				title
 				content
 				databaseId
 				slug
-				date(formatString: "Do")
+				date( formatString: "MMMM D YYYY" )
 			}
 		}
 	}

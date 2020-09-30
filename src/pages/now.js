@@ -46,10 +46,10 @@ export default function Now( { data } ) {
 
 export const pageQuery = graphql`
 query {
-	wpPage(slug: { eq: "now" }) {
+	wpPage( slug: { eq: "now" } ) {
 		title
 		content
-		modified(formatString: "Do")
+		modified( formatString: "MMMM D YYYY" )
 	}
 }
 `
