@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet';
 import Layout from '../components/Layout'
 
 export default ( { data } ) => {
@@ -7,6 +8,34 @@ export default ( { data } ) => {
 
 	return (
 		<Layout>
+			<Helmet
+				title={ post.title }
+				meta={[
+					{
+						'name': 'description',
+						'content': post.excerpt
+					},
+					{
+						'name': 'og:title',
+						'content': post.title
+					},
+					{
+						'name': 'og:description',
+						'content': post.excerpt
+					},
+					{
+						'name': 'og:type',
+						'content': 'website'
+					},
+					{
+						'name': 'og:image',
+						'content': (
+							post.featuredImage &&
+							post.featureImage.node.sourceUrl
+						)
+					}
+				]}
+			/>
 			<main>
 				<article
 					key={ post.databaseId }
@@ -38,8 +67,15 @@ query($slug: String!) {
 				technologies
 				inspiration
 				content
+				excerpt
 				slug
 				date( formatString: "Do" )
+				featuredImage {
+					node {
+						srcSet
+						sourceUrl
+					}
+				}
 			}
 		}
 	}

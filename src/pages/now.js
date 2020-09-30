@@ -1,12 +1,34 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 
 export default function Now( { data } ) {
 	const { title, content, modified } = data.wpPage
 
-	return [
+	return (
 		<Layout>
+			<Helmet
+				title={ title }
+				meta={[
+					{
+						'name': 'description',
+						'content': 'A page to tell you what I\'ve been up to'
+					},
+					{
+						'name': 'og:title',
+						'content': title
+					},
+					{
+						'name': 'og:description',
+						'content': 'A page to tell you what I\'ve been up to'
+					},
+					{
+						'name': 'og:type',
+						'content': 'website'
+					}
+				]}
+			/>
 			<main>
 				<article>
 					<header>
@@ -19,7 +41,7 @@ export default function Now( { data } ) {
 				</article>
 			</main>
 		</Layout>
-	]
+	)
 }
 
 export const pageQuery = graphql`

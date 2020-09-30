@@ -1,10 +1,32 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 
 export default function Project( { data } ) {
 	return (
 		<Layout>
+			<Helmet
+				title='Projects'
+				meta={[
+					{
+						'name': 'description',
+						'content': 'Various little coding projects I\'ve done'
+					},
+					{
+						'name': 'og:title',
+						'content': 'Projects | steve'
+					},
+					{
+						'name': 'og:description',
+						'content': 'Various little coding projects I\'ve done'
+					},
+					{
+						'name': 'og:type',
+						'content': 'website'
+					}
+				]}
+			/>
 			<main>
 				{ data.allWpProject.edges.map( ( { node } ) => {
 					return (

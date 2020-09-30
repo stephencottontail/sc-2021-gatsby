@@ -1,10 +1,32 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 
 export default function Theme( { data } ) {
 	return (
 		<Layout>
+			<Helmet
+				title='Themes'
+				meta={[
+					{
+						'name': 'description',
+						'content': 'WordPress themes I\'ve created'
+					},
+					{
+						'name': 'og:title',
+						'content': 'Themes | steve'
+					},
+					{
+						'name': 'og:description',
+						'content': 'WordPress themes I\'ve created'
+					},
+					{
+						'name': 'og:type',
+						'content': 'website'
+					}
+				]}
+			/>
 			<main>
 				{ data.allWpThemePost.edges.map( ( { node } ) => {
 					return (
