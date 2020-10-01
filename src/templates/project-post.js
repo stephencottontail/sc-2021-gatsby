@@ -31,7 +31,7 @@ export default ( { data } ) => {
 						'name': 'og:image',
 						'content': (
 							post.featuredImage &&
-							post.featureImage.node.sourceUrl
+							post.featuredImage.node.sourceUrl
 						)
 					}
 				]}
@@ -43,10 +43,11 @@ export default ( { data } ) => {
 				>
 					<header>
 						<h2>{ post.title }</h2>
-						<p>{ post.date }</p>
-						<p>{ post.codepen }</p>
-						<p>{ post.technologies }</p>
-						<p>{ post.inspiration }</p>
+						<p>
+							<span><b>Date</b>{ post.date }</span>
+							<span><b>Technologies</b>{ post.technologies }</span>
+							<span><b>Inspiration</b>{ post.inspiration }</span>
+						</p>
 					</header>
 					<div
 						dangerouslySetInnerHTML={{ __html: post.content }}

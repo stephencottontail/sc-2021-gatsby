@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
+import classnames from 'classnames';
 import Layout from '../components/Layout'
+import Categories from '../components/Categories';
 
 export default function Theme( { data } ) {
 	return (
@@ -27,6 +29,15 @@ export default function Theme( { data } ) {
 					}
 				]}
 			/>
+			<header
+				className={ classnames( 'page-header', 'archive-header' ) }
+			>
+				<h1
+					className={ classnames( 'page-title', 'archive-title' ) }
+				>
+					Themes
+				</h1>
+			</header>
 			<main>
 				{ data.allWpThemePost.edges.map( ( { node } ) => {
 					return (
@@ -37,12 +48,12 @@ export default function Theme( { data } ) {
 							<header>
 								<Link to={ `${node.slug}` }>
 									<h2>{ node.title }</h2>
-									<p>{ node.date }</p>
 								</Link>
+								<p>
+									<span><b>Date</b>{ node.date }</span>
+									{ node.categories && <Categories src={ node.categories } /> }
+								</p>
 							</header>
-							<div
-								dangerouslySetInnerHTML={{ __html: node.content }}
-							/>
 						</article>
 					)
 				} ) }
@@ -61,6 +72,11 @@ query {
 				databaseId
 				slug
 				date( formatString: "MMMM D YYYY" )
+				categories {
+					nodes {
+						name
+					}
+				}
 			}
 		}
 	}

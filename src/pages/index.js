@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
+import Categories from '../components/Categories';
+import Tags from '../components/Tags';
 
 export default function Home( { data } ) {
 	return (
@@ -15,12 +17,13 @@ export default function Home( { data } ) {
 							<header>
 								<Link to={ `blog/${node.slug}` }>
 									<h2>{ node.title }</h2>
-									<p>{ node.date }</p>
 								</Link>
+								<p>
+									<span><b>Date</b>{ node.date }</span>
+									{ node.categories && <Categories src={ node.categories } /> }
+									{ node.tags && <Tags src={ node.tags } /> }
+								</p>
 							</header>
-							<div
-								dangerouslySetInnerHTML={{ __html: node.excerpt }}
-							/>
 						</article>
 					)
 				} ) }
@@ -44,6 +47,16 @@ query {
 				databaseId
 				slug
 				date( formatString: "MMMM D YYYY" )
+				categories {
+					nodes {
+						name
+					}
+				}
+				tags {
+					nodes {
+						name
+					}
+				}
 			}
 		}
 	}

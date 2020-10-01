@@ -2,6 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet';
 import Layout from '../components/Layout'
+import Categories from '../components/Categories';
+import Tags from '../components/Tags';
 
 export default ( { data } ) => {
 	const post = data.allWpPost.edges[0].node
@@ -31,7 +33,7 @@ export default ( { data } ) => {
 						'name': 'og:image',
 						'content': (
 							post.featuredImage &&
-							post.featureImage.node.sourceUrl
+							post.featuredImage.node.sourceUrl
 						)
 					}
 				]}
@@ -43,7 +45,11 @@ export default ( { data } ) => {
 				>
 					<header>
 						<h2>{ post.title }</h2>
-						<p>{ post.date }</p>
+						<p>
+							<span><b>Date</b>{ post.date }</span>
+							{ post.categories && <Categories src={ post.categories } /> }
+							{ post.tags && <Tags src={ post.tags } /> }
+						</p>
 					</header>
 					<div
 						dangerouslySetInnerHTML={{ __html: post.content }}
@@ -64,6 +70,16 @@ query($slug: String!) {
 				excerpt
 				slug
 				date(formatString: "MMMM D YYYY")
+				categories {
+					nodes {
+						name
+					}
+				}
+				tags {
+					nodes {
+						name
+					}
+				}
 				featuredImage {
 					node {
 						srcSet

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/stephencottontail/sc-2021-gatsby#readme",
   "dependencies": {
+    "classnames": "^2.2.6",
     "dotenv": "^8.2.0",
     "gatsby": "^2.24.65",
     "gatsby-plugin-sharp": "^2.6.36",

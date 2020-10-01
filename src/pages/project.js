@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
+import classnames from 'classnames';
 import Layout from '../components/Layout'
 
 export default function Project( { data } ) {
@@ -27,6 +28,15 @@ export default function Project( { data } ) {
 					}
 				]}
 			/>
+			<header
+				className={ classnames( 'page-header', 'archive-header' ) }
+			>
+				<h1
+					className={ classnames( 'page-title', 'archive-title' ) }
+				>
+					Projects
+				</h1>
+			</header>
 			<main>
 				{ data.allWpProject.edges.map( ( { node } ) => {
 					return (
@@ -37,15 +47,13 @@ export default function Project( { data } ) {
 							<header>
 								<Link to={ `${node.slug}` }>
 									<h2>{ node.title }</h2>
-									<p>{ node.date }</p>
-									<p>{ node.codepen }</p>
-									<p>{ node.technologies }</p>
-									<p>{ node.inspiration }</p>
 								</Link>
+								<p>
+									<span><b>Date</b>{ node.date }</span>
+									<span><b>Technologies</b>{ node.technologies }</span>
+									<span><b>Inspiration</b>{ node.inspiration }</span>
+								</p>
 							</header>
-							<div
-								dangerouslySetInnerHTML={{ __html: node.content }}
-							/>
 						</article>
 					)
 				} ) }
