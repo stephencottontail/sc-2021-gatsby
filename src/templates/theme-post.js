@@ -3,26 +3,27 @@ import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet';
 import Layout from '../components/Layout'
 import Categories from '../components/Categories';
+import Pagination from '../components/Pagination';
 
 export default ( { data } ) => {
-	const post = data.allWpThemePost.edges[0].node
+	const { cur, prev, next } = data;
 
 	return (
 		<Layout>
 			<Helmet
-				title={ post.title }
+				title={ cur.title }
 				meta={[
 					{
 						'name': 'description',
-						'content': post.excerpt
+						'content': cur.excerpt
 					},
 					{
 						'name': 'og:title',
-						'content': post.title
+						'content': cur.title
 					},
 					{
 						'name': 'og:description',
-						'content': post.excerpt
+						'content': cur.excerpt
 					},
 					{
 						'name': 'og:type',
@@ -31,8 +32,8 @@ export default ( { data } ) => {
 					{
 						'name': 'og:image',
 						'content': (
-							post.featuredImage &&
-							post.featuredImage.node.sourceUrl
+							cur.featuredImage &&
+							cur.featuredImage.node.sourceUrl
 						)
 					}
 				]}
@@ -40,44 +41,51 @@ export default ( { data } ) => {
 			<main>
 				<article>
 					<header>
-						<h2>{ post.title }</h2>
+						<h2>{ cur.title }</h2>
 						<p>
-							<span><b>Date</b>{ post.date }</span>
-							{ post.categories && <Categories src={ post.categories } /> }
+							<span><b>Date</b>{ cur.date }</span>
+							{ cur.categories && <Categories src={ cur.categories } /> }
 						</p>
 					</header>
 					<div
-						dangerouslySetInnerHTML={{ __html: post.content }}
+						dangerouslySetInnerHTML={{ __html: cur.content }}
 					/>
 				</article>
+				<Pagination prev={ prev } next={ next } />
 			</main>
 		</Layout>
 	)
 }
 
 export const query = graphql`
-query($slug: String!) {
-	allWpThemePost( filter: { slug: { eq: $slug } } ) {
-		edges {
-			node {
-				title
-				content
-				excerpt
-				slug
-				date( formatString: "MMMM D YYYY" )
-				categories {
-					nodes {
-						name
-					}
-				}
-				featuredImage {
-					node {
-						srcSet
-						sourceUrl
-					}
-				}
+query($slug: String!, $next: String, $prev: String) {
+	cur: wpThemePost( slug: { eq: $slug } ) {
+		title
+		content
+		excerpt
+		slug
+		date( formatString: "MMMM D YYYY" )
+		categories {
+			nodes {
+				name
 			}
 		}
+		featuredImage {
+			node {
+				srcSet
+				sourceUrl
+			}
+		}
+	}
+
+	prev: wpThemePost( slug: { eq: $prev } ) {
+		title
+		slug
+	}
+
+	next: wpThemePost( slug: { eq: $next } ) {
+		title
+		slug
 	}
 }
 `

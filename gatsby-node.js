@@ -19,6 +19,12 @@ exports.createPages = ( { graphql, actions } ) => {
 						}
 					}
 				}
+				previous {
+					slug
+				}
+				next {
+					slug
+				}
 			}
 		},
 		theme: allWpThemePost( sort: { fields: [date] } ) {
@@ -29,6 +35,12 @@ exports.createPages = ( { graphql, actions } ) => {
 					slug
 					date(formatString: "Do")
 					databaseId
+				}
+				previous {
+					slug
+				}
+				next {
+					slug
 				}
 			}
 		},
@@ -44,6 +56,12 @@ exports.createPages = ( { graphql, actions } ) => {
 					date(formatString: "Do")
 					databaseId
 				}
+				previous {
+					slug
+				}
+				next {
+					slug
+				}
 			}
 		}
 	}
@@ -57,7 +75,9 @@ exports.createPages = ( { graphql, actions } ) => {
 				path: `blog/${edge.node.slug}`,
 				component: path.resolve( './src/templates/blog-post.js' ),
 				context: {
-					slug: edge.node.slug
+					slug: edge.node.slug,
+					prev: edge.previous ? edge.previous.slug : '',
+					next: edge.next ? edge.next.slug : '',
 				}
 			} )
 		} )
@@ -67,7 +87,9 @@ exports.createPages = ( { graphql, actions } ) => {
 				path: `theme/${edge.node.slug}`,
 				component: path.resolve( './src/templates/theme-post.js' ),
 				context: {
-					slug: edge.node.slug
+					slug: edge.node.slug,
+					prev: edge.previous ? edge.previous.slug : '',
+					next: edge.next ? edge.next.slug : '',
 				}
 			} )
 		} )
@@ -77,7 +99,9 @@ exports.createPages = ( { graphql, actions } ) => {
 				path: `project/${edge.node.slug}`,
 				component: path.resolve( './src/templates/project-post.js' ),
 				context: {
-					slug: edge.node.slug
+					slug: edge.node.slug,
+					prev: edge.previous ? edge.previous.slug : '',
+					next: edge.next ? edge.next.slug : '',
 				}
 			} )
 		} )

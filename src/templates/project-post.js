@@ -2,26 +2,27 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet';
 import Layout from '../components/Layout'
+import Pagination from '../components/Pagination';
 
 export default ( { data } ) => {
-	const post = data.allWpProject.edges[0].node
+	const { cur, prev, next } = data;
 
 	return (
 		<Layout>
 			<Helmet
-				title={ post.title }
+				title={ cur.title }
 				meta={[
 					{
 						'name': 'description',
-						'content': post.excerpt
+						'content': cur.excerpt
 					},
 					{
 						'name': 'og:title',
-						'content': post.title
+						'content': cur.title
 					},
 					{
 						'name': 'og:description',
-						'content': post.excerpt
+						'content': cur.excerpt
 					},
 					{
 						'name': 'og:type',
@@ -30,55 +31,62 @@ export default ( { data } ) => {
 					{
 						'name': 'og:image',
 						'content': (
-							post.featuredImage &&
-							post.featuredImage.node.sourceUrl
+							cur.featuredImage &&
+							cur.featuredImage.node.sourceUrl
 						)
 					}
 				]}
 			/>
 			<main>
 				<article
-					key={ post.databaseId }
-					id={ post.databaseId }
+					key={ cur.databaseId }
+					id={ cur.databaseId }
 				>
 					<header>
-						<h2>{ post.title }</h2>
+						<h2>{ cur.title }</h2>
 						<p>
-							<span><b>Date</b>{ post.date }</span>
-							<span><b>Technologies</b>{ post.technologies }</span>
-							<span><b>Inspiration</b>{ post.inspiration }</span>
+							<span><b>Date</b>{ cur.date }</span>
+							<span><b>Technologies</b>{ cur.technologies }</span>
+							<span><b>Inspiration</b>{ cur.inspiration }</span>
 						</p>
 					</header>
 					<div
-						dangerouslySetInnerHTML={{ __html: post.content }}
+						dangerouslySetInnerHTML={{ __html: cur.content }}
 					/>
 				</article>
+				<Pagination prev={ prev } next={ next } />
 			</main>
 		</Layout>
 	)
 }
 
 export const query = graphql`
-query($slug: String!) {
-	allWpProject( filter: { slug: { eq: $slug } } ) {
-		edges {
+query($slug: String!, $next: String, $prev: String) {
+	cur: wpProject( slug: { eq: $slug } ) {
+		title
+		codepen
+		technologies
+		inspiration
+		content
+		excerpt
+		slug
+		date( formatString: "MMMM D YYYY" )
+		featuredImage {
 			node {
-				title
-				codepen
-				technologies
-				inspiration
-				content
-				excerpt
-				slug
-				date( formatString: "MMMM D YYYY" )
-				featuredImage {
-					node {
-						srcSet
-						sourceUrl
-					}
-				}
+				srcSet
+				sourceUrl
 			}
 		}
+	}
+
+	prev: wpProject( slug: { eq: $prev } ) {
+		title
+		slug
+	}
+
+	next: wpProject( slug: { eq: $next } ) {
+		title
+		slug
 	}
 }
 `
