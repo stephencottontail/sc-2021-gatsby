@@ -1,13 +1,43 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet';
 import classnames from 'classnames';
 import Layout from '../components/Layout'
 
 export default function Home( { data } ) {
-	const post = data.allWpPage.edges[0].node;
+	const post = data.wpPage;
 
 	return (
 		<Layout>
+			<Helmet
+				title='Steve'
+				titleTemplate='Steve'
+				meta={[
+					{
+						'name': 'description',
+						'content': 'Steve is a web designer/developer'
+					},
+					{
+						'name': 'og:title',
+						'content': 'Steve'
+					},
+					{
+						'name': 'og:description',
+						'content': 'Steve is a web designer/developer'
+					},
+					{
+						'name': 'og:type',
+						'content': 'website'
+					},
+					{
+						'name': 'og:image',
+						'content': (
+							post.featuredImage &&
+							post.featuredImage.node.sourceUrl
+						)
+					}
+				]}
+			/>
 			<header
 				className={ classnames( 'page-header' ) }
 			>
@@ -37,10 +67,12 @@ export default function Home( { data } ) {
  */
 export const pageQuery = graphql`
 query {
-	allWpPage( filter: { databaseId: { eq: 44 } } ) {
-		edges {
+	wpPage( databaseId: { eq: 44 } ) {
+		title
+		content
+		featuredImage {
 			node {
-				content
+				sourceUrl
 			}
 		}
 	}
