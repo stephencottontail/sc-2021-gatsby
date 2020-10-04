@@ -61,13 +61,13 @@ export default function Home( { data } ) {
 
 /**
  * for now, it looks like you have to hardcode in the
- * ID if you're using a static front page
+ * slug if you're using a static front page
  *
  * @link https://github.com/gatsbyjs/gatsby-source-wordpress-experimental/issues/194
  */
 export const pageQuery = graphql`
 query {
-	wpPage( databaseId: { eq: 44 } ) {
+	wpPage( slug: { eq: "front-page" } ) {
 		title
 		content
 		featuredImage {
