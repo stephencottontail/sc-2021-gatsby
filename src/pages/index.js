@@ -38,22 +38,24 @@ export default function Home( { data } ) {
 					}
 				]}
 			/>
-			<header
-				className={ classnames( 'page-header' ) }
-			>
-				<h1
-					className={ classnames( 'page-title' ) }
-				>
-					Steve
-					<span>Web Designer/Developer</span>
-					<span>Contributor to the GitHub Arctic Code Vault*</span>
-				</h1>
-				<p>*No, really. <a href="https://github.com/stephencottontail/">Check for yourself.</a></p>
-			</header>
 			<main>
-				<div
-					dangerouslySetInnerHTML={{ __html: post.content }}
-				/>
+				<article>
+					<header
+						className={ classnames( 'page-header' ) }
+					>
+						<h1
+							className={ classnames( 'page-title' ) }
+						>
+							Steve
+							<span>Web Designer/Developer</span>
+							<span>Contributor to the GitHub Arctic Code Vault*</span>
+						</h1>
+						<p>*No, really. <a href="https://github.com/stephencottontail/">Check for yourself.</a></p>
+					</header>
+						<div
+							dangerouslySetInnerHTML={{ __html: post.content }}
+						/>
+				</article>
 			</main>
 		</Layout>
 	)

@@ -29,16 +29,16 @@ export default function( { data, pageContext } ) {
 					}
 				]}
 			/>
-			<header
-				className={ classnames( 'page-header', 'archive-header' ) }
-			>
-				<h1
-					className={ classnames( 'page-title', 'archive-title' ) }
-				>
-					Blog
-				</h1>
-			</header>
 			<main>
+				<header
+					className={ classnames( 'page-header', 'archive-header' ) }
+				>
+					<h1
+						className={ classnames( 'page-title', 'archive-title' ) }
+					>
+						Blog
+					</h1>
+				</header>
 				{ data.allWpPost.edges.map( ( { node } ) => {
 					return (
 						<article
@@ -58,17 +58,17 @@ export default function( { data, pageContext } ) {
 						</article>
 					);
 				} ) }
+				<div
+					className={ classnames( 'pagination', 'archive-pagination' ) }
+				>
+					{ ! isFirst && (
+						<Link to={ prevPage } rel="prev"><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /><span><b>Newer Posts</b></span></Link>
+					) }
+					{ ! isLast && (
+						<Link to={ nextPage } rel="next"><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /><span><b>Older Posts</b></span></Link>
+					) }
+				</div>
 			</main>
-			<div
-				className={ classnames( 'pagination', 'archive-pagination' ) }
-			>
-				{ ! isFirst && (
-					<Link to={ prevPage } rel="prev"><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /><span><b>Newer Posts</b></span></Link>
-				) }
-				{ ! isLast && (
-					<Link to={ nextPage } rel="next"><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /><span><b>Older Posts</b></span></Link>
-				) }
-			</div>
 		</Layout>
 	);
 };

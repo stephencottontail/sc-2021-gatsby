@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
+import classnames from 'classnames';
 import Layout from '../components/Layout'
 
 export default function Now( { data } ) {
@@ -31,9 +32,15 @@ export default function Now( { data } ) {
 			/>
 			<main>
 				<article>
-					<header>
-						<h1>{ title }</h1>
-						<p>{ modified }</p>
+					<header
+						className={ classnames( 'page-header' ) }
+					>
+						<h1
+							className={ classnames( 'page-title' ) }
+						>
+							{ title }
+							<span>{ modified }</span>
+						</h1>
 					</header>
 					<div
 						dangerouslySetInnerHTML={{ __html: content }}
