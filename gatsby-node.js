@@ -70,7 +70,35 @@ exports.createPages = ( { graphql, actions } ) => {
 			throw result.errors
 		}
 
-		result.data.post.edges.forEach( edge => {
+		const postsPerPage = 2;
+		const allPosts = result.data.post.edges;
+		const allThemes = result.data.theme.edges;
+		const allProjects = result.data.project.edges;
+		const numPostPages = Math.ceil( allPosts.length / postsPerPage );
+		const numThemePages = Math.ceil( allThemes.length / postsPerPage );
+		const numProjectPages = Math.ceil( allProjects.length / postsPerPage );
+
+		Array.from( { length: numPostPages } ).forEach( ( _, i ) => {
+			allPosts.forEach( edge => {
+				createPage( {
+					path: 0 === i ? `blog` : `blog/${i + 1}`,
+					component: path.resolve( './src/templates/blog-archive.js' ),
+					/**
+					 * these are available both to GraphQL and also as the
+					 * `pageContext` prop. none of the docs or tutorials i
+					 * read mentioned that second part.
+					 */
+					context: {
+						limit: postsPerPage,
+						skip: i * postsPerPage,
+						numPostPages,
+						currentPostPage: i + 1
+					}
+				} )
+			} )
+		} );
+
+		allPosts.forEach( edge => {
 			createPage( {
 				path: `blog/${edge.node.slug}`,
 				component: path.resolve( './src/templates/blog-post.js' ),
@@ -82,7 +110,22 @@ exports.createPages = ( { graphql, actions } ) => {
 			} )
 		} )
 
-		result.data.theme.edges.forEach( edge => {
+		Array.from( { length: numThemePages } ).forEach( ( _, i ) => {
+			allThemes.forEach( edge => {
+				createPage( {
+					path: 0 === i ? `theme` : `theme/${i + 1}`,
+					component: path.resolve( './src/templates/theme-archive.js' ),
+					context: {
+						limit: postsPerPage,
+						skip: i * postsPerPage,
+						numThemePages,
+						currentThemePage: i + 1
+					}
+				} );
+			} );
+		} );
+
+		allThemes.forEach( edge => {
 			createPage( {
 				path: `theme/${edge.node.slug}`,
 				component: path.resolve( './src/templates/theme-post.js' ),
@@ -94,7 +137,22 @@ exports.createPages = ( { graphql, actions } ) => {
 			} )
 		} )
 
-		result.data.project.edges.forEach( edge => {
+		Array.from( { length: numProjectPages } ).forEach( ( _, i ) => {
+			allProjects.forEach( edge => {
+				createPage( {
+					path: 0 === i ? `project` : `project/${i + 1}`,
+					component: path.resolve( './src/templates/project-archive.js' ),
+					context: {
+						limit: postsPerPage,
+						skip: i * postsPerPage,
+						numProjectPages,
+						currentProjectPage: i + 1
+					}
+				} );
+			} );
+		} );
+
+		allProjects.forEach( edge => {
 			createPage( {
 				path: `project/${edge.node.slug}`,
 				component: path.resolve( './src/templates/project-post.js' ),
