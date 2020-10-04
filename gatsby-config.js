@@ -13,6 +13,9 @@ module.exports = {
 				url: process.env.WORDPRESS_URL,
 				verbose: true
 			}
+		},
+		{
+			resolve: 'gatsby-plugin-sass'
 		}
 	]
 }
