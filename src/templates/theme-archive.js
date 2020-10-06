@@ -30,10 +30,10 @@ export default function( { data, pageContext } ) {
 			/>
 			<main>
 				<header
-					className={ classnames( 'page-header', 'archive-header' ) }
+					className={ classnames( 'header', 'page-header', 'archive-header' ) }
 				>
 					<h1
-						className={ classnames( 'page-title', 'archive-title' ) }
+						className={ classnames( 'page-title', 'archive-title', 'middle' ) }
 					>
 						Themes
 					</h1>

@@ -1,0 +1,78 @@
+* {
+	box-sizing: border-box;
+
+	&::before,
+	&::after {
+		box-sizing: inherit;
+	}
+}
+
+body {
+	background-color: $color-bg;
+	color: $color-text;
+	font-family: "Helvetica", sans-serif;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+	text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
+h1 {
+	font-size: calc( 54px + ( 60 - 54 ) * ( 100vw - 480px ) / ( 1200 - 480 ) );
+	line-height: ( $base-spacing * 3 );
+}
+
+h2 {
+	font-size: calc( 42px + ( 48 - 42 ) * ( 100vw - 480px ) / ( 1200 - 480 ) );
+	line-height: ( $base-spacing * 2 );
+}
+
+h3 {
+	font-size: calc( 34px + ( 40 - 34 ) * ( 100vw - 480px ) / ( 1200 - 480 ) );
+	line-height: ( $base-spacing * 2 );
+}
+
+h4 {
+	font-size: calc( 26px + ( 32 - 26 ) * ( 100vw - 480px ) / ( 1200 - 480 ) );
+	line-height: ( $base-spacing * 2 );
+}
+
+h5 {
+	font-size: calc( 20px + ( 24 - 20 ) * ( 100vw - 480px ) / ( 1200 - 480 ) );
+	line-height: $base-spacing;
+}
+
+h6 {
+	font-size: $base-font-size;
+	line-height: $base-spacing;
+}
+
+p {
+	margin: 0 0 $base-spacing 0;
+}
+
+a {
+	color: $blue-base;
+
+	&:visited,
+	&:hover,
+	&:focus {
+		color: $blue-500;
+	}
+}
+
+ul, ol {
+	margin: ( $base-spacing / 2 ) 0;
+	padding-left: ( $base-spacing * 1.5 );
+
+	ul, ol {
+		margin: 0;
+	}
+}
+
+iframe {
+	margin-bottom: $base-spacing;
+}

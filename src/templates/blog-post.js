@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet';
+import classnames from 'classnames';
 import Layout from '../components/Layout'
 import Categories from '../components/Categories';
 import Tags from '../components/Tags';
@@ -44,8 +45,14 @@ export default ( { data } ) => {
 					key={ cur.databaseId }
 					id={ cur.databaseId }
 				>
-					<header>
-						<h2>{ cur.title }</h2>
+					<header
+						className={ classnames( 'header', 'page-header' ) }
+					>
+						<h2
+							className={ classnames( 'page-title', 'middle' ) }
+						>
+							{ cur.title }
+						</h2>
 						<p>
 							<span><b>Date</b>{ cur.date }</span>
 							{ cur.categories && <Categories src={ cur.categories } /> }

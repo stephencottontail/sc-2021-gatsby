@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet';
+import classnames from 'classnames';
 import Layout from '../components/Layout'
 import Pagination from '../components/Pagination';
 
@@ -42,8 +43,14 @@ export default ( { data } ) => {
 					key={ cur.databaseId }
 					id={ cur.databaseId }
 				>
-					<header>
-						<h2>{ cur.title }</h2>
+					<header
+						className={ classnames( 'header', 'page-header' ) }
+					>
+						<h2
+							className={ classnames( 'page-title', 'middle' ) }
+						>
+							{ cur.title }
+						</h2>
 						<p>
 							<span><b>Date</b>{ cur.date }</span>
 							<span><b>Technologies</b>{ cur.technologies }</span>

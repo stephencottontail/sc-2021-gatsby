@@ -33,10 +33,10 @@ export default function Now( { data } ) {
 			<main>
 				<article>
 					<header
-						className={ classnames( 'page-header' ) }
+						className={ classnames( 'header', 'page-header' ) }
 					>
 						<h1
-							className={ classnames( 'page-title' ) }
+							className={ classnames( 'page-title', 'middle' ) }
 						>
 							{ title }
 							<span>{ modified }</span>

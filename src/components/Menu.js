@@ -3,7 +3,18 @@ import { Link } from 'gatsby'
 
 export default function Menu() {
 	return (
-		<nav>
+		<nav
+			id='nav'
+		>
+			<button
+				id='nav-toggle'
+			>
+				<span
+					className='screen-reader-text'
+					dangerouslySetInnerHTML={{ __html: 'Open Menu' }}
+				/>
+			</button>
+
 			<ul>
 				<li><Link to="/now">Now</Link></li>
 				<li><Link to="/blog">Blog</Link></li>

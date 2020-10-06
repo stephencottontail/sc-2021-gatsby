@@ -1,0 +1,140 @@
+$items: 4;
+$transition-delay: 0.05s;
+$transition-duration: 0.5s;
+
+nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-weight: bold;
+
+	ul {
+		font-size: 42px;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		height: ( 32px / $items );
+		line-height: ( 32px / $items );
+		pointer-events: none;
+		text-transform: lowercase;
+		transform: scaleY( 0.2 );
+		white-space: nowrap;
+
+		&:nth-child( 1 ) {
+			letter-spacing: -9px;
+		}
+
+		&:nth-child( 2 ) {
+			letter-spacing: -3px;
+		}
+
+		&:nth-child( 3 ) {
+			letter-spacing: -13px;
+		}
+
+		&:nth-child( 4 ) {
+			letter-spacing: -11px;
+		}
+	}
+
+	a {
+		position: relative;
+		display: inline-block;
+		color: transparent;
+
+		&::before {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			height: 2px;
+			width: 100%;
+			background-color: $yellow-500;
+			content: '';
+			opacity: 1;
+			transform: translateY( -50% ) scaleY( 5 );
+		}
+	}
+
+	&.nav-active {
+		position: static;
+		width: 100%;
+
+		ul {
+			padding: ( $base-spacing * 2 );
+			pointer-events: auto;
+		}
+
+		li {
+			height: ( $base-spacing * 2 );
+			line-height: ( $base-spacing * 2 );
+			letter-spacing: 0;
+			opacity: 1;
+			pointer-events: auto;
+			transform: scale( 1 );
+		}
+
+		a {
+			color: $yellow-400;
+			transform: scaleY( 1 );
+
+			&:hover {
+				color: $blue-base;
+			}
+
+			&::before {
+				opacity: 0;
+			}
+		}
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		ul {
+			transition: padding $transition-duration;
+		}
+
+		li {
+			transition-property: height, letter-spacing;
+			transition-duration: $transition-duration;
+
+			@for $i from 1 through $items {
+				&:nth-child(#{$i}) {
+					$delay: ($i - 1) * $transition-delay;
+					transition-delay: $delay;
+
+					& > a::before {
+						transition: opacity 0.1s;
+					}
+				}
+			}
+		}
+
+		&.nav-open li {
+			transition-property: height, letter-spacing;
+			transition-duration: $transition-duration;
+
+			@for $i from 1 through $items {
+				&:nth-child(#{$i}) {
+					$delay: ($items - $i) * $transition-delay;
+					transition-delay: $delay;
+
+					& > a::before {
+						transition: opacity ((($items - $i) * $transition-duration) / 2);
+					}
+				}
+			}
+		}
+	}
+}
+
+#nav-toggle {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 48px;
+	width: 48px;
+	appearance: none;
+	border: 0;
+}

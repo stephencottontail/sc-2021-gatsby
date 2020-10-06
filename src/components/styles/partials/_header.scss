@@ -1,0 +1,30 @@
+.header {
+	display: flex;
+	flex-direction: column;
+
+	& > * {
+		margin-top: $base-spacing;
+		margin-bottom: $base-spacing;
+	}
+
+	.middle {
+		margin-top: auto;
+		margin-bottom: auto;
+	}
+
+	& > :first-child:not(.middle) {
+		margin-top: 0;
+	}
+
+	& > :last-child:not(.middle) {
+		margin-bottom: 0;
+	}
+}
+
+.home-header {
+	height: 80vh;
+}
+
+.page-header {
+	height: 40vh;
+}

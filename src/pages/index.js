@@ -41,10 +41,10 @@ export default function Home( { data } ) {
 			<main>
 				<article>
 					<header
-						className={ classnames( 'page-header' ) }
+						className={ classnames( 'header', 'home-header' ) }
 					>
 						<h1
-							className={ classnames( 'page-title' ) }
+							className={ classnames( 'page-title', 'middle' ) }
 						>
 							Steve
 							<span>Web Designer/Developer</span>
@@ -52,9 +52,9 @@ export default function Home( { data } ) {
 						</h1>
 						<p>*No, really. <a href="https://github.com/stephencottontail/">Check for yourself.</a></p>
 					</header>
-						<div
-							dangerouslySetInnerHTML={{ __html: post.content }}
-						/>
+					<div
+						dangerouslySetInnerHTML={{ __html: post.content }}
+					/>
 				</article>
 			</main>
 		</Layout>
