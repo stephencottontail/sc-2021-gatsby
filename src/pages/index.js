@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet';
 import classnames from 'classnames';
 import Layout from '../components/Layout'
+import Spacer from '../components/Spacer';
 
 export default function Home( { data } ) {
 	const post = data.wpPage;
@@ -43,6 +44,7 @@ export default function Home( { data } ) {
 					<header
 						className={ classnames( 'header', 'home-header' ) }
 					>
+						<Spacer />
 						<h1
 							className={ classnames( 'page-title', 'middle' ) }
 						>

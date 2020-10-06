@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import classnames from 'classnames';
 import Layout from '../components/Layout'
+import Spacer from '../components/Spacer';
 import Categories from '../components/Categories';
 import arrow from '../components/svg/arrow.svg';
 
@@ -32,6 +33,7 @@ export default function( { data, pageContext } ) {
 				<header
 					className={ classnames( 'header', 'page-header', 'archive-header' ) }
 				>
+					<Spacer />
 					<h1
 						className={ classnames( 'page-title', 'archive-title', 'middle' ) }
 					>

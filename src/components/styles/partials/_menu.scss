@@ -4,8 +4,8 @@ $transition-duration: 0.5s;
 
 nav {
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: $base-spacing;
+	left: $base-spacing;
 	font-weight: bold;
 
 	ul {
@@ -59,8 +59,9 @@ nav {
 	}
 
 	&.nav-active {
-		position: static;
-		width: 100%;
+		background-color: $color-bg;
+		box-shadow: 5px 5px 20px -10px rgba( $yellow-500, 0.60 );
+		width: auto;
 
 		ul {
 			padding: ( $base-spacing * 2 );
@@ -136,5 +137,38 @@ nav {
 	height: 48px;
 	width: 48px;
 	appearance: none;
+	background-color: transparent;
 	border: 0;
+	border-radius: 100%;
+	z-index: 10;
+
+	&::before,
+	&::after {
+		position: absolute;
+		top: 23px;
+		left: 12px;
+		height: 2px;
+		width: 22px;
+		background-color: $yellow-500;
+		content: '';
+		opacity: 0;
+		transform-origin: center center;
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition: opacity 10ms;
+			transition-delay: 10ms;
+		}
+
+		.nav-active & {
+			opacity: 1;
+		}
+	}
+
+	&::before {
+		transform: rotate( -45deg );
+	}
+
+	&::after {
+		transform: rotate( 45deg );
+	}
 }

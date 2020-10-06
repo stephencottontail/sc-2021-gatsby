@@ -1,6 +1,7 @@
 .header {
 	display: flex;
 	flex-direction: column;
+	padding: $base-spacing;
 
 	& > * {
 		margin-top: $base-spacing;
@@ -27,4 +28,35 @@
 
 .page-header {
 	height: 40vh;
+}
+
+.home-link {
+	position: absolute;
+	top: $base-spacing;
+	right: $base-spacing;
+	color: $yellow-400;
+	font-size: calc( 42px + ( 48 - 42 ) * ( 100vw - 480px ) / ( 1200 - 480 ) );
+	font-weight: bold;
+	line-height: 32px; /* match height of menu button for a better look */
+	text-transform: lowercase;
+
+	&:visited {
+		color: $yellow-400;
+	}
+
+	&:hover,
+	&:focus {
+		color: $blue-base;
+	}
+}
+
+.page-title {
+	text-transform: lowercase;
+
+	& span {
+		display: block;
+		font-size: $base-font-size;
+		font-weight: normal;
+		line-height: $base-spacing;
+	}
 }

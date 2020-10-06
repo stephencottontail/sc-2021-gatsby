@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet';
 import classnames from 'classnames';
 import Layout from '../components/Layout'
+import Spacer from '../components/Spacer';
 import Categories from '../components/Categories';
 import Pagination from '../components/Pagination';
 
@@ -44,6 +45,7 @@ export default ( { data } ) => {
 					<header
 						className={ classnames( 'header', 'page-header' ) }
 					>
+						<Spacer />
 						<h2
 							className={ classnames( 'page-title', 'middle' ) }
 						>
