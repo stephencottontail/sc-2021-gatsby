@@ -8,7 +8,7 @@ export default function Home( { data } ) {
 	const post = data.wpPage;
 
 	return (
-		<Layout>
+		<Layout home>
 			<Helmet
 				title='Steve'
 				titleTemplate='Steve'
