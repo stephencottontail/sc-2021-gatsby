@@ -47,7 +47,7 @@ export default function( { data, pageContext } ) {
 							id={ node.databaseId }
 						>
 							<header>
-								<Link to={ `${node.slug}` }>
+								<Link to={ `/theme/${node.slug}` }>
 									<h2>{ node.title }</h2>
 								</Link>
 								<p>
