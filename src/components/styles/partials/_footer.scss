@@ -1,0 +1,61 @@
+footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin-top: ( $base-spacing * 2 );
+
+	> * {
+		padding-left: ( $base-spacing / 2 );
+		padding-right: ( $base-spacing / 2 );
+	}
+}
+
+.footer-home-link {
+	flex-grow: 1;
+	flex-basis: 256px + $base-spacing;
+
+	img {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.footer-cta {
+	margin-top: ( $base-spacing / 2 );
+	flex-grow: 999;
+	flex-basis: 0;
+	min-width: ( 256px + $base-spacing );
+	text-transform: lowercase;
+
+	.footer-cta-title {
+		font-size: calc( 26px + ( 32 - 26 ) * ( 100vw - 480px ) / ( 1200 - 480 ) );
+		line-height: ( $base-spacing * 2 );
+	}
+
+	a {
+		display: block;
+		font-size: $base-font-size;
+		line-height: $base-spacing;
+	}
+}
+
+.footer-copyright {
+	position: relative;
+	flex-basis: 100%;
+
+	/**
+	 * position the divider line as if it was its own element within a 1/2-spacing Stack
+	 */
+	margin-top: $base-spacing;
+
+	&::before {
+		position: absolute;
+		top: -( $base-spacing / 2 );
+		left: ( $base-spacing / 2 );
+		height: 2px;
+		width: 15%;
+		background-color: $color-text;
+		content: '';
+	}
+}
