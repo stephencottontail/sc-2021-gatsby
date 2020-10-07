@@ -1,7 +1,6 @@
 .header {
 	display: flex;
 	flex-direction: column;
-	padding: $base-spacing;
 
 	& > * {
 		margin-top: $base-spacing;

@@ -1,0 +1,11 @@
+main {
+	padding: $base-spacing;
+
+	& > * + * {
+		margin-top: ( $base-spacing * 2 );
+	}
+}
+
+article > * + * {
+	margin-top: $base-spacing;
+}

@@ -65,7 +65,7 @@ export default function( { data, pageContext } ) {
 						<Link to={ prevPage } rel="prev"><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /><span><b>Newer Posts</b></span></Link>
 					) }
 					{ ! isLast && (
-						<Link to={ nextPage } rel="next"><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /><span><b>Older Posts</b></span></Link>
+						<Link to={ nextPage } rel="next"><span><b>Older Posts</b></span><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /></Link>
 					) }
 				</div>
 			</main>

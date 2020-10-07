@@ -1,0 +1,32 @@
+.pagination {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	font-weight: bold;
+	text-transform: lowercase;
+
+	a {
+		display: flex;
+		align-items: center;
+		color: $color-text;
+		text-decoration: none;
+	}
+
+	span {
+		font-weight: normal;
+	}
+
+	b {
+		display: block;
+	}
+
+	[rel=next] {
+		margin-left: auto;
+
+		img {
+			transform: rotate( 180deg );
+		}
+	}
+}
+

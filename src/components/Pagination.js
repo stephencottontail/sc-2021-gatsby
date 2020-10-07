@@ -18,8 +18,8 @@ export default function Pagination( { prev = null, next = null } ) {
 		<div
 			className={ classnames( 'pagination', 'single-pagination' ) }
 		>
-			{ prev && <Link to={ `../${prev.slug}` }><img style={{height: '100px', width: '50px'}} src={arrow} alt='' /><span><b>Previous Post</b>{ prev.title }</span></Link> }
-			{ next && <Link to={ `../${next.slug}` }><img style={{height: '100px', width: '50px'}} src={arrow} alt='' /><span><b>Next Post</b>{ next.title }</span></Link> }
+			{ prev && <Link to={ `../${prev.slug}` } rel="prev"><img style={{height: '100px', width: '50px'}} src={arrow} alt='' /><span><b>Previous Post</b>{ prev.title }</span></Link> }
+			{ next && <Link to={ `../${next.slug}` } rel="next"><span><b>Next Post</b>{ next.title }</span><img style={{height: '100px', width: '50px'}} src={arrow} alt='' /></Link> }
 		</div>
 	);
 };
