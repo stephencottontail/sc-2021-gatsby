@@ -53,7 +53,9 @@ export default ( { data } ) => {
 						>
 							{ cur.title }
 						</h2>
-						<p>
+						<p
+							className='entry-meta'
+						>
 							<span><b>Date</b>{ cur.date }</span>
 							<span><b>Technologies</b>{ cur.technologies }</span>
 							<span><b>Inspiration</b>{ cur.inspiration }</span>

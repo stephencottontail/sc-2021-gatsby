@@ -1,0 +1,13 @@
+.entry-meta {
+	display: flex;
+	flex-wrap: wrap;
+
+	> * {
+		flex-grow: 1;
+		flex-basis: calc( 500px * 999 - 100% * 999 );
+	}
+
+	b {
+		display: block;
+	}
+}

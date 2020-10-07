@@ -49,7 +49,9 @@ export default function( { data, pageContext } ) {
 								<Link to={ `/project/${node.slug}` }>
 									<h2>{ node.title }</h2>
 								</Link>
-								<p>
+								<p
+									className='entry-meta'
+								>
 									<span><b>Date</b>{ node.date }</span>
 									<span><b>Technologies</b>{ node.technologies }</span>
 									<span><b>Inspiration</b>{ node.inspiration }</span>

@@ -51,7 +51,9 @@ export default function( { data, pageContext } ) {
 								<Link to={ `/blog/${node.slug}` }>
 									<h2>{ node.title }</h2>
 								</Link>
-								<p>
+								<p
+									className='entry-meta'
+								>
 									<span><b>Date</b>{ node.date }</span>
 									{ node.categories && <Categories src={ node.categories } /> }
 									{ node.tags && <Tags src={ node.tags } /> }

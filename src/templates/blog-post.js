@@ -55,7 +55,9 @@ export default ( { data } ) => {
 						>
 							{ cur.title }
 						</h2>
-						<p>
+						<p
+							className='entry-meta'
+						>
 							<span><b>Date</b>{ cur.date }</span>
 							{ cur.categories && <Categories src={ cur.categories } /> }
 							{ cur.tags && <Tags src={ cur.tags } /> }
