@@ -58,7 +58,7 @@ nav {
 		}
 	}
 
-	&.nav-active {
+	&.nav-open {
 		background-color: $color-bg;
 		box-shadow: 5px 5px 20px -10px rgba( $yellow-500, 0.60 );
 		width: auto;
@@ -159,7 +159,7 @@ nav {
 			transition-delay: 10ms;
 		}
 
-		.nav-active & {
+		.nav-open & {
 			opacity: 1;
 		}
 	}

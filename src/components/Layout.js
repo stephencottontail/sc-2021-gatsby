@@ -1,5 +1,4 @@
 import React from 'react'
-import { withPrefix } from 'gatsby';
 import { Helmet } from 'react-helmet'
 import Header from './Header';
 import Footer from './Footer';
@@ -12,13 +11,7 @@ export default function Layout( { children, ...props } ) {
 		<Helmet
 			htmlAttributes={{ lang: 'en' }}
 			titleTemplate={ '%s | steve' }
-		>
-			<script
-				type='text/javascript'
-				src={withPrefix('nav.js')}
-				defer
-			/>
-		</Helmet>,
+		/>,
 		<Header
 			home={ isHome }
 		/>,
