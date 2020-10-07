@@ -55,8 +55,8 @@ export default function( { data, pageContext } ) {
 									className='entry-meta'
 								>
 									<span><b>Date</b>{ node.date }</span>
-									{ node.categories && <Categories src={ node.categories } /> }
-									{ node.tags && <Tags src={ node.tags } /> }
+									{ 0 > node.categories.nodes.length && <Categories src={ node.categories } /> }
+									{ 0 > node.tags.nodes.length && <Tags src={ node.tags } /> }
 								</p>
 							</header>
 						</article>

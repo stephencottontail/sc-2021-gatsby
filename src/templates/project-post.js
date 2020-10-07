@@ -57,8 +57,8 @@ export default ( { data } ) => {
 							className='entry-meta'
 						>
 							<span><b>Date</b>{ cur.date }</span>
-							<span><b>Technologies</b>{ cur.technologies }</span>
-							<span><b>Inspiration</b>{ cur.inspiration }</span>
+							{ cur.technologies && <span><b>Technologies</b>{ cur.technologies }</span> }
+							{ cur.inspiration && <span><b>Inspiration</b>{ cur.inspiration }</span> }
 						</p>
 					</header>
 					<div

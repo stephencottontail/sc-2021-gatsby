@@ -53,8 +53,8 @@ export default function( { data, pageContext } ) {
 									className='entry-meta'
 								>
 									<span><b>Date</b>{ node.date }</span>
-									<span><b>Technologies</b>{ node.technologies }</span>
-									<span><b>Inspiration</b>{ node.inspiration }</span>
+									{ node.technologies && <span><b>Technologies</b>{ node.technologies }</span> }
+									{ node.inspiration && <span><b>Inspiration</b>{ node.inspiration }</span> }
 								</p>
 							</header>
 						</article>

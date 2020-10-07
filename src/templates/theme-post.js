@@ -55,7 +55,7 @@ export default ( { data } ) => {
 							className='entry-meta'
 						>
 							<span><b>Date</b>{ cur.date }</span>
-							{ cur.categories && <Categories src={ cur.categories } /> }
+							{ 0 > cur.categories.nodes.length && <Categories src={ cur.categories } /> }
 						</p>
 					</header>
 					<div
