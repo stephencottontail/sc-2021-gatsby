@@ -1,11 +1,12 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image';
 import { Helmet } from 'react-helmet';
 import classnames from 'classnames';
 import Layout from '../components/Layout'
 import Spacer from '../components/Spacer';
 
-export default function Home( { data } ) {
+export default function Index( { data } ) {
 	const post = data.wpPage;
 
 	return (
@@ -54,20 +55,20 @@ export default function Home( { data } ) {
 						</h1>
 						<p>*No, really. <a href="https://github.com/stephencottontail/">Check for yourself.</a></p>
 					</header>
-					<div
-						dangerouslySetInnerHTML={{ __html: post.content }}
-					/>
+						<Img
+							fluid={	post.featuredImage.node.localFile.childImageSharp.fluid }
+							alt='hi'
+						/>
 				</article>
 			</main>
 		</Layout>
-	)
+	);
 }
 
 /**
- * for now, it looks like you have to hardcode in the
- * slug if you're using a static front page
- *
- * @link https://github.com/gatsbyjs/gatsby-source-wordpress-experimental/issues/194
+ * it's set up to pull the featured image from the front
+ * page. this is admittedly probably not the best way,
+ * but it is a way
  */
 export const pageQuery = graphql`
 query {
@@ -77,6 +78,13 @@ query {
 		featuredImage {
 			node {
 				sourceUrl
+				localFile {
+					childImageSharp {
+						fluid {
+							...GatsbyImageSharpFluid
+						}
+					}
+				}
 			}
 		}
 	}
