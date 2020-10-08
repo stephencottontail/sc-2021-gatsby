@@ -20,7 +20,7 @@ export default function( { data, pageContext } ) {
 				meta={[
 					{
 						'name': 'og:title',
-						'content': 'Project Archives'
+							'content': 'Project Archives'
 					},
 					{
 						'name': 'og:type',
@@ -28,49 +28,47 @@ export default function( { data, pageContext } ) {
 					}
 				]}
 			/>
-			<main>
-				<header
-					className={ classnames( 'header', 'page-header', 'archive-header' ) }
+			<header
+				className={ classnames( 'header', 'page-header', 'archive-header' ) }
+			>
+				<Spacer />
+				<h1
+					className={ classnames( 'page-title', 'archive-title', 'middle' ) }
 				>
-					<Spacer />
-					<h1
-						className={ classnames( 'page-title', 'archive-title', 'middle' ) }
+					Projects
+				</h1>
+			</header>
+			{ data.allWpProject.edges.map( ( { node } ) => {
+				return (
+					<article
+						key={ node.databaseId }
+						id={ node.databaseId }
 					>
-						Projects
-					</h1>
-				</header>
-				{ data.allWpProject.edges.map( ( { node } ) => {
-					return (
-						<article
-							key={ node.databaseId }
-							id={ node.databaseId }
-						>
-							<header>
-								<Link to={ `/project/${node.slug}` }>
-									<h2>{ node.title }</h2>
-								</Link>
-								<p
-									className='entry-meta'
-								>
-									<span><b>Date</b>{ node.date }</span>
-									{ node.technologies && <span><b>Technologies</b>{ node.technologies }</span> }
-									{ node.inspiration && <span><b>Inspiration</b>{ node.inspiration }</span> }
-								</p>
-							</header>
-						</article>
-					);
-				} ) }
-				<div
-					className={ classnames( 'pagination', 'archive-pagination' ) }
-				>
-					{ ! isFirst && (
-						<Link to={ prevPage } rel="prev"><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /><span><b>Newer Posts</b></span></Link>
-					) }
-					{ ! isLast && (
-						<Link to={ nextPage } rel="next"><span><b>Older Posts</b></span><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /></Link>
-					) }
-				</div>
-			</main>
+						<header>
+							<Link to={ `/project/${node.slug}` }>
+								<h2>{ node.title }</h2>
+							</Link>
+							<p
+								className='entry-meta'
+							>
+								<span><b>Date</b>{ node.date }</span>
+								{ node.technologies && <span><b>Technologies</b>{ node.technologies }</span> }
+								{ node.inspiration && <span><b>Inspiration</b>{ node.inspiration }</span> }
+							</p>
+						</header>
+					</article>
+				);
+			} ) }
+			<div
+				className={ classnames( 'pagination', 'archive-pagination' ) }
+			>
+				{ ! isFirst && (
+					<Link to={ prevPage } rel="prev"><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /><span><b>Newer Posts</b></span></Link>
+				) }
+				{ ! isLast && (
+					<Link to={ nextPage } rel="next"><span><b>Older Posts</b></span><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /></Link>
+				) }
+			</div>
 		</Layout>
 	);
 };

@@ -15,7 +15,7 @@ export default function Now( { data } ) {
 				meta={[
 					{
 						'name': 'description',
-						'content': 'A page to tell you what I\'ve been up to'
+							'content': 'A page to tell you what I\'ve been up to'
 					},
 					{
 						'name': 'og:title',
@@ -31,24 +31,22 @@ export default function Now( { data } ) {
 					}
 				]}
 			/>
-			<main>
-				<article>
-					<header
-						className={ classnames( 'header', 'page-header' ) }
+			<article>
+				<header
+					className={ classnames( 'header', 'page-header' ) }
+				>
+					<Spacer />
+					<h1
+						className={ classnames( 'page-title', 'middle' ) }
 					>
-						<Spacer />
-						<h1
-							className={ classnames( 'page-title', 'middle' ) }
-						>
-							{ title }
-							<span>{ modified }</span>
-						</h1>
-					</header>
-					<div
-						dangerouslySetInnerHTML={{ __html: content }}
-					/>
-				</article>
-			</main>
+						{ title }
+						<span>{ modified }</span>
+					</h1>
+				</header>
+				<div
+					dangerouslySetInnerHTML={{ __html: content }}
+				/>
+			</article>
 		</Layout>
 	)
 }

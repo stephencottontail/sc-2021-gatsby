@@ -22,7 +22,7 @@ export default function( { data, pageContext } ) {
 				meta={[
 					{
 						'name': 'og:title',
-						'content': 'Blog Archives'
+							'content': 'Blog Archives'
 					},
 					{
 						'name': 'og:type',
@@ -30,49 +30,47 @@ export default function( { data, pageContext } ) {
 					}
 				]}
 			/>
-			<main>
-				<header
-					className={ classnames( 'header', 'page-header', 'archive-header' ) }
+			<header
+				className={ classnames( 'header', 'page-header', 'archive-header' ) }
+			>
+				<Spacer />
+				<h1
+					className={ classnames( 'page-title', 'archive-title', 'middle' ) }
 				>
-					<Spacer />
-					<h1
-						className={ classnames( 'page-title', 'archive-title', 'middle' ) }
+					Blog
+				</h1>
+			</header>
+			{ data.allWpPost.edges.map( ( { node } ) => {
+				return (
+					<article
+						key={ node.databaseId }
+						id={ node.databaseId }
 					>
-						Blog
-					</h1>
-				</header>
-				{ data.allWpPost.edges.map( ( { node } ) => {
-					return (
-						<article
-							key={ node.databaseId }
-							id={ node.databaseId }
-						>
-							<header>
-								<Link to={ `/blog/${node.slug}` }>
-									<h2>{ node.title }</h2>
-								</Link>
-								<p
-									className='entry-meta'
-								>
-									<span><b>Date</b>{ node.date }</span>
-									{ 0 > node.categories.nodes.length && <Categories src={ node.categories } /> }
-									{ 0 > node.tags.nodes.length && <Tags src={ node.tags } /> }
-								</p>
-							</header>
-						</article>
-					);
-				} ) }
-				<div
-					className={ classnames( 'pagination', 'archive-pagination' ) }
-				>
-					{ ! isFirst && (
-						<Link to={ prevPage } rel="prev"><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /><span><b>Newer Posts</b></span></Link>
-					) }
-					{ ! isLast && (
-						<Link to={ nextPage } rel="next"><span><b>Older Posts</b></span><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /></Link>
-					) }
-				</div>
-			</main>
+						<header>
+							<Link to={ `/blog/${node.slug}` }>
+								<h2>{ node.title }</h2>
+							</Link>
+							<p
+								className='entry-meta'
+							>
+								<span><b>Date</b>{ node.date }</span>
+								{ 0 > node.categories.nodes.length && <Categories src={ node.categories } /> }
+								{ 0 > node.tags.nodes.length && <Tags src={ node.tags } /> }
+							</p>
+						</header>
+					</article>
+				);
+			} ) }
+			<div
+				className={ classnames( 'pagination', 'archive-pagination' ) }
+			>
+				{ ! isFirst && (
+					<Link to={ prevPage } rel="prev"><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /><span><b>Newer Posts</b></span></Link>
+				) }
+				{ ! isLast && (
+					<Link to={ nextPage } rel="next"><span><b>Older Posts</b></span><img style={{height: '100px', width:'50px'}} src={arrow} alt='' /></Link>
+				) }
+			</div>
 		</Layout>
 	);
 };

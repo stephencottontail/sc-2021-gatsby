@@ -5,15 +5,19 @@ import { Link } from 'gatsby'
 export default function Header( props ) {
 	return (
 		<header>
-			{ ! props.home &&
+			<div
+				className='wrap'
+			>
+				{ ! props.home &&
 				<Link
 					to="/"
 					className="home-link"
 				>
 					Steve
 				</Link>
-			}
-			<Menu />
+				}
+				<Menu />
+			</div>
 		</header>
 	)
 }

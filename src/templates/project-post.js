@@ -16,7 +16,7 @@ export default ( { data } ) => {
 				meta={[
 					{
 						'name': 'description',
-						'content': cur.excerpt
+							'content': cur.excerpt
 					},
 					{
 						'name': 'og:title',
@@ -39,34 +39,32 @@ export default ( { data } ) => {
 					}
 				]}
 			/>
-			<main>
-				<article
-					key={ cur.databaseId }
-					id={ cur.databaseId }
+			<article
+				key={ cur.databaseId }
+				id={ cur.databaseId }
+			>
+				<header
+					className={ classnames( 'header', 'page-header' ) }
 				>
-					<header
-						className={ classnames( 'header', 'page-header' ) }
+					<Spacer />
+					<h2
+						className={ classnames( 'page-title', 'middle' ) }
 					>
-						<Spacer />
-						<h2
-							className={ classnames( 'page-title', 'middle' ) }
-						>
-							{ cur.title }
-						</h2>
-						<p
-							className='entry-meta'
-						>
-							<span><b>Date</b>{ cur.date }</span>
-							{ cur.technologies && <span><b>Technologies</b>{ cur.technologies }</span> }
-							{ cur.inspiration && <span><b>Inspiration</b>{ cur.inspiration }</span> }
-						</p>
-					</header>
-					<div
-						dangerouslySetInnerHTML={{ __html: cur.content }}
-					/>
-				</article>
-				<Pagination prev={ prev } next={ next } />
-			</main>
+						{ cur.title }
+					</h2>
+					<p
+						className='entry-meta'
+					>
+						<span><b>Date</b>{ cur.date }</span>
+						{ cur.technologies && <span><b>Technologies</b>{ cur.technologies }</span> }
+						{ cur.inspiration && <span><b>Inspiration</b>{ cur.inspiration }</span> }
+					</p>
+				</header>
+				<div
+					dangerouslySetInnerHTML={{ __html: cur.content }}
+				/>
+			</article>
+			<Pagination prev={ prev } next={ next } />
 		</Layout>
 	)
 }

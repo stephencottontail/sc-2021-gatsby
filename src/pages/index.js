@@ -16,7 +16,7 @@ export default function Home( { data } ) {
 				meta={[
 					{
 						'name': 'description',
-						'content': 'Steve is a web designer/developer'
+							'content': 'Steve is a web designer/developer'
 					},
 					{
 						'name': 'og:title',
@@ -39,26 +39,24 @@ export default function Home( { data } ) {
 					}
 				]}
 			/>
-			<main>
-				<article>
-					<header
-						className={ classnames( 'header', 'home-header' ) }
+			<article>
+				<header
+					className={ classnames( 'header', 'home-header' ) }
+				>
+					<Spacer />
+					<h1
+						className={ classnames( 'page-title', 'middle' ) }
 					>
-						<Spacer />
-						<h1
-							className={ classnames( 'page-title', 'middle' ) }
-						>
-							Steve
-							<span>Web Designer/Developer</span>
-							<span>Contributor to the GitHub Arctic Code Vault*</span>
-						</h1>
-						<p>*No, really. <a href="https://github.com/stephencottontail/">Check for yourself.</a></p>
-					</header>
-					<div
-						dangerouslySetInnerHTML={{ __html: post.content }}
-					/>
-				</article>
-			</main>
+						Steve
+						<span>Web Designer/Developer</span>
+						<span>Contributor to the GitHub Arctic Code Vault*</span>
+					</h1>
+					<p>*No, really. <a href="https://github.com/stephencottontail/">Check for yourself.</a></p>
+				</header>
+				<div
+					dangerouslySetInnerHTML={{ __html: post.content }}
+				/>
+			</article>
 		</Layout>
 	)
 }

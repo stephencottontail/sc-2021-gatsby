@@ -15,7 +15,13 @@ export default function Layout( { children, ...props } ) {
 		<Header
 			home={ isHome }
 		/>,
-		children,
+		<main>
+			<div
+				className='wrap'
+			>
+				{ children }
+			</div>
+		</main>,
 		<Footer />
 	]
 }
