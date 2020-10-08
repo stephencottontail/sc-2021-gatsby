@@ -55,10 +55,10 @@ export default function Index( { data } ) {
 						</h1>
 						<p>*No, really. <a href="https://github.com/stephencottontail/">Check for yourself.</a></p>
 					</header>
-						<Img
-							fluid={	post.featuredImage.node.localFile.childImageSharp.fluid }
-							alt='hi'
-						/>
+					<Img
+						fluid={	post.featuredImage.node.localFile.childImageSharp.fluid }
+						alt='A tree in winter'
+					/>
 				</article>
 			</main>
 		</Layout>
