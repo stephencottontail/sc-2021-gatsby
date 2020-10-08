@@ -1,10 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image';
 import { Helmet } from 'react-helmet';
 import classnames from 'classnames';
 import Layout from '../components/Layout'
 import Spacer from '../components/Spacer';
+import Recent from '../components/Recent';
 
 export default function Index( { data } ) {
 	const post = data.wpPage;
@@ -55,9 +55,8 @@ export default function Index( { data } ) {
 						</h1>
 						<p>*No, really. <a href="https://github.com/stephencottontail/">Check for yourself.</a></p>
 					</header>
-					<Img
-						fluid={	post.featuredImage.node.localFile.childImageSharp.fluid }
-						alt='A tree in winter'
+					<Recent
+						fluid={ post.featuredImage.node.localFile.childImageSharp.fluid }
 					/>
 				</article>
 			</main>
