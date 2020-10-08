@@ -1,12 +1,15 @@
 footer {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
 	margin-top: ( $base-spacing * 2 );
 
-	> * {
-		padding-left: ( $base-spacing / 2 );
-		padding-right: ( $base-spacing / 2 );
+	.wrap {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+
+		> * {
+			padding-left: ( $base-spacing / 2 );
+			padding-right: ( $base-spacing / 2 );
+		}
 	}
 }
 
