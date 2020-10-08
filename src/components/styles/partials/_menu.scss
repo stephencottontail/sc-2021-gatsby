@@ -5,7 +5,7 @@ $transition-duration: 0.5s;
 nav {
 	position: absolute;
 	top: $base-spacing;
-	left: $base-spacing;
+	left: 0;
 	background-color: rgba( $color-bg, 0.9 );
 	font-weight: bold;
 	z-index: 5;
