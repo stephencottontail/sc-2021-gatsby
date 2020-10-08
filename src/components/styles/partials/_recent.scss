@@ -1,0 +1,59 @@
+.recent-posts {
+	width: 80%;
+	max-width: 650px;
+	color: $yellow-500;
+	font-size: 28px;
+	font-weight: bold;
+	line-height: 36px; // deliberately break vertical rhythm
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+
+	.title {
+		color: $yellow-base;
+		font-size: 64px;
+		line-height: 64px;
+		letter-spacing: -2px;
+		margin: 0;
+		text-transform: lowercase;
+	}
+
+	.image-wrapper {
+		position: relative;
+		z-index: 0;
+	}
+
+	.overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background-color: rgba( $yellow-100, 0.45 );
+		z-index: 5;
+	}
+
+	.gatsby-image-wrapper {
+		clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 15% 100% );
+	}
+
+	.entries {
+		margin-top: -20px;
+		margin-left: -5%;
+		margin-right: -5%;
+		opacity: 0.99; // hack to create new stacking context
+		word-break: break-all;
+		z-index: 20;
+	}
+
+	a {
+		display: inline-block;
+		color: inherit;
+		margin-right: 6px;
+
+		&:hover,
+		&:focus {
+			color: $blue-base;
+		}
+	}
+}

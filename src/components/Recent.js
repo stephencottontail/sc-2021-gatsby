@@ -18,9 +18,11 @@ export default function Recent( { ...props } ) {
 	`);
 
 	return (
-		<>
+		<div
+			className='recent-posts'
+		>
 			<h2
-				className='recent-posts-title'
+				className='title'
 			>
 				Posts
 			</h2>
@@ -48,6 +50,6 @@ export default function Recent( { ...props } ) {
 					);
 				} ) }
 			</div>
-		</>
+		</div>
 	);
 }
