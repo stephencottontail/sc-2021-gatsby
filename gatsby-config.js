@@ -11,7 +11,17 @@ module.exports = {
 			resolve: 'gatsby-source-wordpress-experimental',
 			options: {
 				url: process.env.WORDPRESS_URL,
-				verbose: true
+				verbose: true,
+				/**
+				 * Netlify will provide these environment variables
+				 * on production
+				 */
+				auth: {
+					htaccess: {
+						username: process.env.HTUSER,
+						password: process.env.HTPASSWD
+					}
+				}
 			}
 		},
 		{
