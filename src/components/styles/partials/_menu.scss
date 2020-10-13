@@ -6,7 +6,6 @@ nav {
 	position: absolute;
 	top: $base-spacing;
 	left: 0;
-	background-color: rgba( $color-bg, 0.9 );
 	font-weight: bold;
 	z-index: 5;
 
@@ -61,7 +60,8 @@ nav {
 	}
 
 	&.nav-open {
-		box-shadow: 5px 5px 20px -10px rgba( $yellow-500, 0.60 );
+		background-color: $yellow-200;
+		box-shadow: 10px 10px 20px 15px rgba( $yellow-200, 0.75 );
 		width: auto;
 
 		ul {
