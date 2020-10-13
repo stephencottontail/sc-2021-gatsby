@@ -22,22 +22,30 @@
 }
 
 .home-header {
-	height: 80vh;
+	min-height: 80vh;
 }
 
 .page-header {
-	height: 40vh;
+	min-height: 40vh;
+}
+
+.site-header {
+	position: absolute;
+	top: $base-spacing;
+	left: $base-spacing;
+	right: $base-spacing;
 }
 
 .home-link {
 	position: absolute;
-	top: $base-spacing;
-	right: $base-spacing;
+	top: 0;
+	right: 0;
 	color: $yellow-400;
 	font-size: calc( 42px + ( 48 - 42 ) * ( 100vw - 480px ) / ( 1200 - 480 ) );
 	font-weight: bold;
 	line-height: 32px; /* match height of menu button for a better look */
 	text-transform: lowercase;
+	z-index: 5;
 
 	&:visited {
 		color: $yellow-400;

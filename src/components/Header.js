@@ -4,7 +4,9 @@ import { Link } from 'gatsby'
 
 export default function Header( props ) {
 	return (
-		<header>
+		<header
+			className='site-header'
+		>
 			<div
 				className='wrap'
 			>
