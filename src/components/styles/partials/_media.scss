@@ -1,0 +1,20 @@
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.alignleft {
+	float: left;
+	margin: 0 $base-spacing $base-spacing 0;
+}
+
+.alignright {
+	float: right;
+	margin: 0 0 $base-spacing $base-spacing;
+}
+
+.aligncenter {
+	margin-left: auto;
+	margin-right: auto;
+}
+
