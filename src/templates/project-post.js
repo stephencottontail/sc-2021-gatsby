@@ -8,6 +8,8 @@ import Pagination from '../components/Pagination';
 
 export default ( { data } ) => {
 	const { cur, prev, next } = data;
+	const regex = new RegExp( '/pen/' );
+	const codepen = `<iframe height="486" width="864" src="${cur.codepen.replace( regex, '/embed/' )}"></iframe>`;
 
 	return (
 		<Layout>
@@ -61,7 +63,7 @@ export default ( { data } ) => {
 					</p>
 				</header>
 				<div
-					dangerouslySetInnerHTML={{ __html: cur.content }}
+					dangerouslySetInnerHTML={{ __html: `${codepen} ${cur.content}` }}
 				/>
 			</article>
 			<Pagination prev={ prev } next={ next } />
