@@ -18,8 +18,8 @@ module.exports = {
 				 */
 				auth: {
 					htaccess: {
-						username: process.env.HTUSER,
-						password: process.env.HTPASSWD
+						username: process.env.HTTPBASICAUTH_USERNAME
+						password: process.env.HTTPBASICAUTH_PASSWORD
 					}
 				}
 			}
