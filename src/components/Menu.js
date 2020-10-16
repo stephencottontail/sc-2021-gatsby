@@ -24,8 +24,8 @@ export default function Menu() {
 			<ul>
 				<li><Link to="/now">Now</Link></li>
 				<li><Link to="/blog">Blog</Link></li>
-				<li><Link to="/theme">Themes</Link></li>
-				<li><Link to="/project">Projects</Link></li>
+				<li><a href="https://github.com/stephencottontail">GitHub</a></li>
+				<li><a href="https://twitter.com/s_cottontail24">Twitter</a></li>
 			</ul>
 		</nav>
 	)
