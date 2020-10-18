@@ -6,7 +6,7 @@ export default function Recent( { ...props } ) {
 	const { fluid } = props;
 	const data = useStaticQuery(graphql`
 	query {
-		allWpPost(limit: 5) {
+		allWpPost(limit: 5, sort: { fields: [date], order: DESC } ) {
 			edges {
 				node {
 					slug
