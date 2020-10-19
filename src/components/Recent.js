@@ -6,7 +6,7 @@ export default function Recent( { ...props } ) {
 	const { fluid } = props;
 	const data = useStaticQuery(graphql`
 	query {
-		allWpPost(limit: 5, sort: { fields: [date], order: DESC } ) {
+		allWpProject(limit: 5, sort: { fields: [date], order: DESC } ) {
 			edges {
 				node {
 					slug
@@ -24,7 +24,7 @@ export default function Recent( { ...props } ) {
 			<h2
 				className='title'
 			>
-				Posts
+				Recent Projects
 			</h2>
 			<div
 				className='image-wrapper'
@@ -34,16 +34,16 @@ export default function Recent( { ...props } ) {
 				/>
 				<Img
 					fluid={ fluid }
-					alt='hi'
+					alt='Snow-covered tree'
 				/>
 			</div>
 			<div
 				className='entries'
 			>
-				{ data.allWpPost.edges.map( ( { node }, i ) => {
+				{ data.allWpProject.edges.map( ( { node }, i ) => {
 					return (
 						<Link
-							to={ `/blog/${node.slug}` }
+							to={ `/project/${node.slug}` }
 						>
 							{ `0${i}/ ${node.title}` }
 						</Link>
