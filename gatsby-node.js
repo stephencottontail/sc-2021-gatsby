@@ -27,23 +27,6 @@ exports.createPages = ( { graphql, actions } ) => {
 				}
 			}
 		},
-		theme: allWpThemePost( sort: { fields: [date] } ) {
-			edges {
-				node {
-					title
-					content
-					slug
-					date(formatString: "Do")
-					databaseId
-				}
-				previous {
-					slug
-				}
-				next {
-					slug
-				}
-			}
-		},
 		project: allWpProject( sort: { fields: [date] } ) {
 			edges {
 				node {
@@ -72,10 +55,8 @@ exports.createPages = ( { graphql, actions } ) => {
 
 		const postsPerPage = 2;
 		const allPosts = result.data.post.edges;
-		const allThemes = result.data.theme.edges;
 		const allProjects = result.data.project.edges;
 		const numPostPages = Math.ceil( allPosts.length / postsPerPage );
-		const numThemePages = Math.ceil( allThemes.length / postsPerPage );
 		const numProjectPages = Math.ceil( allProjects.length / postsPerPage );
 
 		Array.from( { length: numPostPages } ).forEach( ( _, i ) => {
@@ -102,33 +83,6 @@ exports.createPages = ( { graphql, actions } ) => {
 			createPage( {
 				path: `blog/${edge.node.slug}`,
 				component: path.resolve( './src/templates/blog-post.js' ),
-				context: {
-					slug: edge.node.slug,
-					prev: edge.previous ? edge.previous.slug : '',
-					next: edge.next ? edge.next.slug : '',
-				}
-			} )
-		} )
-
-		Array.from( { length: numThemePages } ).forEach( ( _, i ) => {
-			allThemes.forEach( edge => {
-				createPage( {
-					path: 0 === i ? `theme` : `theme/${i + 1}`,
-					component: path.resolve( './src/templates/theme-archive.js' ),
-					context: {
-						limit: postsPerPage,
-						skip: i * postsPerPage,
-						numThemePages,
-						currentThemePage: i + 1
-					}
-				} );
-			} );
-		} );
-
-		allThemes.forEach( edge => {
-			createPage( {
-				path: `theme/${edge.node.slug}`,
-				component: path.resolve( './src/templates/theme-post.js' ),
 				context: {
 					slug: edge.node.slug,
 					prev: edge.previous ? edge.previous.slug : '',

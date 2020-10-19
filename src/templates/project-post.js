@@ -8,8 +8,12 @@ import Pagination from '../components/Pagination';
 
 export default ( { data } ) => {
 	const { cur, prev, next } = data;
-	const regex = new RegExp( '/pen/' );
-	const codepen = `<iframe height="486" width="864" src="${cur.codepen.replace( regex, '/embed/' )}"></iframe>`;
+	let codepen = '';
+
+	if ( cur.codepen ) {
+		const regex = new RegExp( '/pen/' );
+		codepen = `<iframe height="486" width="864" src="${cur.codepen.replace( regex, '/embed/' )}"></iframe>`;
+	}
 
 	return (
 		<Layout>
